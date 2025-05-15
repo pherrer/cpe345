@@ -1,0 +1,36 @@
+
+#FINAL PROJECT OMNETPP.INI
+
+[General]
+network = Finalproject
+repeat = 10 #this is so we can collect confidence intervals
+Finalproject.numTellers = 3 #we will have 3 bank tellers!
+
+**.gen[*].numJobs = 1000000 #1 million customers per teller
+**.fifo[*].capacity = 100 #hold 100 jobs in fifo queue...
+
+#recording statistics...
+#https://docs.omnetpp.org/tutorials/tictoc/part5/
+#https://doc.omnetpp.org/omnetpp/manual/#cha:result-recording:~:text=12%20Result%20Recording%20and%20Analysis%C2%B6
+
+**.fifo[*].queueingTime.record = true
+**.fifo[*].queueingTime.vector-recording = true
+**.fifo[*].utilization.record = true
+**.fifo[*].queueLength.record = true
+**.fifo[*].queueLength.vector-recording = true
+**.fifo[*].drop.record = true
+
+#we will simulate THREE loads (done through configurations)
+#low load of customers, medium load of customers, and high load
+
+[Config Low]
+**.gen[*].interArrivalTime = exponential(1.5s)
+**.fifo[*].serviceTime = exponential(1.0s)
+
+[Config Medium]
+**.gen[*].interArrivalTime = exponential(1.2s) 
+**.fifo[*].serviceTime = exponential(1.0s) 
+
+[Config High]
+**.gen[*].interArrivalTime = exponential(1.0s)
+**.fifo[*].serviceTime = exponential(1.5s)
