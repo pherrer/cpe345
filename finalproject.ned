@@ -8,7 +8,6 @@
 //...exponential interarrival times, and exponential service times.
 // Our simulation will also allow us to explore scalability and optimization,
 //...such as the impact of adding more tellers or modifying service rates. 
-//We will also include a histogram(s) for further data analysis. 
 
 
 
